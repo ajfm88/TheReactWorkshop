@@ -75,20 +75,24 @@ class App extends Component {
     if (this.state.playerScore < index) { return; }
     const question = this.state.questions[index];
     return (
-      <div className="question-display">
+      <div className="question-display" key={`q-${index}`}>
         <p className="question">
           {question.question}
         </p>
         <br />
-        <button className="question-choice" onClick={() => this.answerQuestion(index, question.possibleAnswers[0])}>
-          {question.possibleAnswers[0]}
-        </button>
-        <button className="question-choice" onClick={() => this.answerQuestion(index, question.possibleAnswers[1])}>
-          {question.possibleAnswers[1]}
-        </button>
+        { question.possibleAnswers.map((answer, answerIndex) => (
+          <button key={`q-${index}-a-${answerIndex}`} className="question-choice" onClick={() => this.answerQuestion(index, answer)}>
+            {answer}
+          </button>
+        ))}
         <br />
         {this.displayResult(index)}
       </div>
+    );
+  }
+  renderQuestions() {
+    return this.state.questions.map((question, index) =>
+      this.displayQuestion(index)
     );
   }
   render() {
@@ -96,10 +100,7 @@ class App extends Component {
       <div className="App">
         <h1>Quiz Show!</h1>
         <hr/>
-        {this.displayQuestion(0)}
-        {this.displayQuestion(1)}
-        {this.displayQuestion(2)}
-        {this.displayQuestion(3)}
+        {this.renderQuestions()}
       </div>
     );
   }
