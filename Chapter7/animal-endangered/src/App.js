@@ -8,29 +8,27 @@ class App extends Component {
 }
 
 // Class-based component
-class Animal extends Component {
-  render() {
-    const { name, number, endangered } = this.props;
-    return  (
-      <div>
+// class Animal extends Component {
+//   render({ name, number, endangered } = this.props) {
+//     return  (
+//       <div>
+//       <p>Animal: {name}</p>
+//       <p>Number: {number}</p>
+//       <p>Endangered: {endangered ? 'Yes' : 'No'}</p>
+//       </div>
+//     );
+//   };
+// };
+
+// // Functional component
+const Animal = ({ name, number, endangered }) => {
+  return (
+    <div>
       <p>Animal: {name}</p>
       <p>Number: {number}</p>
       <p>Endangered: {endangered ? 'Yes' : 'No'}</p>
-      </div>
-    );
-  };
+    </div>
+  );
 };
-
-// // Functional component
-// const Animal = props => {
-//   return (
-//     <div>
-//       <p>Animal: {props.name}</p>
-//       <p>Number: {props.number}</p>
-//       <p>Endangered: {props.endangered ? 'Yes': 'No'}</p>
-//     </div>
-//   );
-// };
-
 
 export default App;
