@@ -8,28 +8,29 @@ class App extends Component {
 }
 
 // Class-based component
-// class Animal extends Component {
-//   render() {
-//     return  (
-//       <div>
-//       <p>Animal: {this.props.name}</p>
-//       <p>Number: {this.props.number}</p>
-//       <p>Endangered: {this.props.endangered ? 'Yes' : 'No'}</p>
-//       </div>
-//     );
-//   };
-// };
+class Animal extends Component {
+  render() {
+    const { name, number, endangered } = this.props;
+    return  (
+      <div>
+      <p>Animal: {name}</p>
+      <p>Number: {number}</p>
+      <p>Endangered: {endangered ? 'Yes' : 'No'}</p>
+      </div>
+    );
+  };
+};
 
 // // Functional component
-const Animal = props => {
-  return (
-    <div>
-      <p>Animal: {props.name}</p>
-      <p>Number: {props.number}</p>
-      <p>Endangered: {props.endangered ? 'Yes': 'No'}</p>
-    </div>
-  );
-};
+// const Animal = props => {
+//   return (
+//     <div>
+//       <p>Animal: {props.name}</p>
+//       <p>Number: {props.number}</p>
+//       <p>Endangered: {props.endangered ? 'Yes': 'No'}</p>
+//     </div>
+//   );
+// };
 
 
 export default App;
