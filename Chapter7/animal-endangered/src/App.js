@@ -27,48 +27,32 @@ class App extends Component {
   }
 }
 
-// Class-based component
-class Animal extends Component {
-  render() {
-    const details = this.props.details;
-    const listDetails = details.map((detail, index) => (
-      <li>
-        <div>
-          <p>Animal: {detail.name}</p>
-          <p>Number: {detail.number}</p>
-          <p>Endangered: {detail.endangered ? 'Yes' : 'No'}</p>
-        </div>
-      </li>
-    ));
+const Animal = props => {
+  const details = props.details;
 
-    return (
+  return (
+    <div>
+      {props.children}
+      <ul>
+        {details.map((detail, index) => (
+          <AnimalDetails detail={detail} key={index} />
+        ))}
+      </ul>
+    </div>
+  );
+};
+
+const AnimalDetails = props => {
+  const { name, number, endangered } = props.detail;
+  return (
+    <li>
       <div>
-        {this.props.children}
-        <ul>{listDetails}</ul>
+        <p>Animal: {name}</p>
+        <p>Number: {number}</p>
+        <p>Endangered: {endangered ? 'Yes' : 'No'}</p>
       </div>
-    );
-  }
-}
-
-// Function component
-// const Animal = props => {
-//   const details = props.details;
-//   return (
-//     <div>
-//       {props.children}
-//       <ul>
-//         {details.map((detail, index) => (
-//           <li key={index}>
-//             <div>
-//               <p>Animal: {detail.name}</p>
-//               <p>Number: {detail.number}</p>
-//               <p>Endangered: {detail.endangered ? 'Yes' : 'No'}</p>
-//             </div>
-//           </li>
-//         ))}
-//       </ul>
-//     </div>
-//   );
-// };
+    </li>
+  );
+};
 
 export default App;
